@@ -21,14 +21,14 @@ public class Exercise {
 
     @ManyToOne
     @NotNull
-    private Long idUser;
+    private User user;
 
     private Exercise(){}
 
-    public Exercise(String description, String title, Long idUser) {
+    public Exercise(String description, String title, User user) {
         this.description = description;
         this.title = title;
-        this.idUser = idUser;
+        this.user = user;
     }
 
     public Long getIdExercise() {
@@ -55,11 +55,11 @@ public class Exercise {
         this.description = description;
     }
 
-    public Long getIdUser() {
-        return idUser;
+    public User getUser() {
+        return user;
     }
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

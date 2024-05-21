@@ -19,19 +19,19 @@ public class FoodEntry {
 
     @NotNull
     @ManyToOne
-    private Long idUser;
+    private User user;
 
     @NotNull
     @ManyToOne
-    private Long idDish;
+    private Dish dish;
 
     public FoodEntry(){}
 
-    public FoodEntry(Date date, Float weightGrams, Long idUser, Long idDish) {
+    public FoodEntry(Date date, Float weightGrams, User user, Dish dish) {
         this.date = date;
         this.weightGrams = weightGrams;
-        this.idUser = idUser;
-        this.idDish = idDish;
+        this.user = user;
+        this.dish = dish;
     }
 
     public Long getIdFoodEntry() {
@@ -58,19 +58,19 @@ public class FoodEntry {
         this.weightGrams = weightGrams;
     }
 
-    public Long getIdUser() {
-        return idUser;
+    public User getUser() {
+        return user;
     }
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Long getIdDish() {
-        return idDish;
+    public Dish getDish() {
+        return dish;
     }
 
-    public void setIdDish(Long idDish) {
-        this.idDish = idDish;
+    public void setDish(Dish dish) {
+        this.dish = dish;
     }
 }

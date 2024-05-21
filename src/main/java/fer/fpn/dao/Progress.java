@@ -26,15 +26,15 @@ public class Progress {
 
     @NotNull
     @ManyToOne
-    private Long idUser;
+    private User user;
 
     public Progress(){}
 
-    public Progress(Date date, Float bodyWeight, String comment, Long idUser) {
+    public Progress(Date date, Float bodyWeight, String comment, User user) {
         this.date = date;
         this.bodyWeight = bodyWeight;
         this.comment = comment;
-        this.idUser = idUser;
+        this.user = user;
     }
 
     public Long getIdProgress() {
@@ -69,11 +69,11 @@ public class Progress {
         this.comment = comment;
     }
 
-    public Long getIdUser() {
-        return idUser;
+    public User getUser() {
+        return user;
     }
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

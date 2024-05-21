@@ -21,14 +21,14 @@ public class Training {
 
     @NotNull
     @ManyToOne
-    private Long idUser;
+    private User user;
 
     public Training(){}
 
-    public Training(String title, String description, Long idUser) {
+    public Training(String title, String description, User user) {
         this.title = title;
         this.description = description;
-        this.idUser = idUser;
+        this.user = user;
     }
 
     public Long getIdTraining() {
@@ -55,11 +55,11 @@ public class Training {
         this.description = description;
     }
 
-    public Long getIdUser() {
-        return idUser;
+    public User getUser() {
+        return user;
     }
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

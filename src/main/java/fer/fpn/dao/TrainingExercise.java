@@ -9,11 +9,11 @@ public class TrainingExercise {
 
     @Id
     @OneToOne
-    private Long idTraining;
+    private Training training;
 
     @Id
     @OneToOne
-    private Long idUser;
+    private Exercise exercise;
 
     private Integer reps;
 
@@ -23,28 +23,28 @@ public class TrainingExercise {
 
     public TrainingExercise(){}
 
-    public TrainingExercise(Long idUser, Integer reps, Integer sets, Float weight, Long idTraining) {
-        this.idUser = idUser;
+    public TrainingExercise(Exercise exercise, Integer reps, Integer sets, Float weight, Training training) {
+        this.exercise = exercise;
         this.reps = reps;
         this.sets = sets;
         this.weight = weight;
-        this.idTraining = idTraining;
+        this.training = training;
     }
 
-    public Long getIdTraining() {
-        return idTraining;
+    public Training getTraining() {
+        return training;
     }
 
-    public void setIdTraining(Long idTraining) {
-        this.idTraining = idTraining;
+    public void setTraining(Training training) {
+        this.training = training;
     }
 
-    public Long getIdUser() {
-        return idUser;
+    public Exercise getExercise() {
+        return exercise;
     }
 
-    public void setIdUser(Long idUser) {
-        this.idUser = idUser;
+    public void setExercise(Exercise exercise) {
+        this.exercise = exercise;
     }
 
     public Integer getReps() {

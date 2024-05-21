@@ -31,11 +31,11 @@ public class User {
 
     //ovo je id trenera ovog korisnika
     @ManyToOne
-    private Long trainer;
+    private User trainer;
 
     public User(){}
 
-    public User(String role, String name, String surname, String email, String password, Float dailyCalGoal, Long trainer) {
+    public User(String role, String name, String surname, String email, String password, Float dailyCalGoal, User trainer) {
         this.role = role;
         this.name = name;
         this.surname = surname;
@@ -45,12 +45,12 @@ public class User {
         this.trainer = trainer;
     }
 
-    public Long getCoachId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setCoachId(Long coachId) {
-        userId = coachId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getRole() {
@@ -101,11 +101,11 @@ public class User {
         this.dailyCalGoal = dailyCalGoal;
     }
 
-    public Long getTrainer() {
+    public User getTrainer() {
         return trainer;
     }
 
-    public void setTrainer(Long trainer) {
+    public void setTrainer(User trainer) {
         this.trainer = trainer;
     }
 }
