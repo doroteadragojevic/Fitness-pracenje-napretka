@@ -11,6 +11,7 @@ import java.sql.Date;
 @Entity
 public class Progress {
 
+
     @Id
     @GeneratedValue
     private Long idProgress;
