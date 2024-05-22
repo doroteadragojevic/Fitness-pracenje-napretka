@@ -1,34 +1,33 @@
-package fer.fpn.dao;
+package fer.fpn.DTO;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import fer.fpn.dao.Training;
 import org.antlr.v4.runtime.misc.NotNull;
 
-@Entity
-public class Training {
+public class TrainingDTO {
+    public Long getUserId() {
+        return userId;
+    }
 
-    @Id
-    @GeneratedValue
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     private Long idTraining;
 
-    @NotNull
     private String title;
 
-    @NotNull
     private String description;
+    private Long userId;
 
-    @NotNull
-    @ManyToOne
-    private User user;
-
-    public Training(){}
-
-    public Training(String title, String description, User user) {
+    public TrainingDTO(Long idTraining, String title, String description, Long userId) {
+        this.idTraining = idTraining;
         this.title = title;
         this.description = description;
-        this.user = user;
+        this.userId = userId;
+    }
+
+    public static TrainingDTO toDto(Training training) {
+        return new TrainingDTO(training.getIdTraining(), training.getTitle(), training.getDescription(), training.getUser().getUserId());
     }
 
     public Long getIdTraining() {
@@ -53,13 +52,5 @@ public class Training {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }
