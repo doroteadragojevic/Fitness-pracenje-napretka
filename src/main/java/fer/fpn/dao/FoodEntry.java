@@ -19,7 +19,7 @@ public class FoodEntry {
 
     @NotNull
     @ManyToOne
-    private User user;
+    private UserFPN user;
 
     @NotNull
     @ManyToOne
@@ -27,7 +27,7 @@ public class FoodEntry {
 
     public FoodEntry(){}
 
-    public FoodEntry(Date date, Float weightGrams, User user, Dish dish) {
+    public FoodEntry(Date date, Float weightGrams, UserFPN user, Dish dish) {
         this.date = date;
         this.weightGrams = weightGrams;
         this.user = user;
@@ -58,11 +58,11 @@ public class FoodEntry {
         this.weightGrams = weightGrams;
     }
 
-    public User getUser() {
+    public UserFPN getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserFPN user) {
         this.user = user;
     }
 

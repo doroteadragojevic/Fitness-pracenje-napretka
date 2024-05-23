@@ -4,12 +4,25 @@ import fer.fpn.dao.TrainingExercise;
 
 public class TrainingExerciseDTO {
 
+    private Long id;
     private Long idExercise;
     private Long idTraining;
     private String titleOfExercise;
     private Integer reps;
     private Integer sets;
     private Float weight;
+
+    public TrainingExerciseDTO() {
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getIdTraining() {
         return idTraining;
@@ -19,7 +32,8 @@ public class TrainingExerciseDTO {
         this.idTraining = idTraining;
     }
 
-    public TrainingExerciseDTO(Long idExercise, String titleOfExercise, Integer reps, Integer sets, Float weight, Long idTraining) {
+    public TrainingExerciseDTO(Long id,Long idExercise, String titleOfExercise, Integer reps, Integer sets, Float weight, Long idTraining) {
+        this.id  = id;
         this.idExercise = idExercise;
         this.titleOfExercise = titleOfExercise;
         this.reps = reps;
@@ -29,7 +43,7 @@ public class TrainingExerciseDTO {
     }
 
     public static TrainingExerciseDTO toDto(TrainingExercise te){
-        return new TrainingExerciseDTO(te.getExercise().getIdExercise(), te.getExercise().getTitle(), te.getReps(), te.getSets(), te.getWeight(), te.getTraining().getIdTraining());
+        return new TrainingExerciseDTO(te.getId(), te.getExercise().getIdExercise(), te.getExercise().getTitle(), te.getReps(), te.getSets(), te.getWeight(), te.getTraining().getIdTraining());
     }
 
     public Long getIdExercise() {

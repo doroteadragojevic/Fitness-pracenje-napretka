@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Korisnici</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            font-size: 16px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        nav {
+            background-color: #515052;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: flex-end;
+            margin: 20px 80px;
+        }
+
+        button {
+            background-color: #7371FC;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .table-container {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #FFFFFA;
+            color: #333;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #C97D60;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        td {
+            color: #333;
+        }
+
+        .table-container table {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="#treninzi" onclick="redirectToTrainings()">Treninzi</a>
+    <a href="#vjezbe-na-treningu" onclick="redirectToTrainingExercises()">Vjezbe na treningu</a>
+    <a href="#vjezbe" onclick="redirectToExercises()">Vjezbe</a>
+    <a href="#korisnik" style="background-color: #6BA292; color: black;">Korisnik</a>
+</nav>
+
+<h1>Korisnici</h1>
+<br>
+<div class="button-container">
+    <button type="button" onclick="newUser()">Novi korisnik</button>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Rola</th>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.userId}">1</td>
+            <td th:text="${user.role}">sportaš</td>
+            <td th:text="${user.name}">Ivan</td>
+            <td th:text="${user.surname}">Ivić</td>
+            <td th:text="${user.email}">ivan@example.com</td>
+            <td class="action-buttons">
+                <button type="button" th:onclick="'redirectToPregled(' + ${user.userId} + ')'">Pregled</button>
+                <button type="button" th:onclick="'redirectToUpdate(' + ${user.userId} + ')'">Uredi</button>
+                <button type="button" th:onclick="'redirectToDelete(' + ${user.userId} + ')'">Izbriši</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+
+    function redirectToPregled(userId) {
+        var currentHost = window.location.host;
+        window.location.href = "http://" + currentHost + "/user/" + userId;
+    }
+
+    function redirectToUpdate(userId) {
+        var currentHost = window.location.host;
+        window.location.href = "http://" + currentHost + "/user/update/" + userId;
+    }
+
+    function redirectToDelete(userId) {
+        var currentHost = window.location.host;
+        window.location.href = "http://" + currentHost + "/user/delete/" + userId;
+    }
+
+    function redirectToTrainings() {
+        var currentHost = window.location.host;
+        window.location.href = "http://" + currentHost + "/training/";
+    }
+
+    function redirectToTrainingExercises() {
+        var currentHost = window.location.host;
+        window.location.href = "http://" + currentHost + "/trainingExercise/";
+    }
+
+    function redirectToExercises() {
+        var currentHost = window.location.host;
+        window.location.href = "http://" + currentHost + "/exercise/";
+    }
+
+    function newUser() {
+        var currentHost = window.location.host;
+        window.location.href = "http://" + currentHost + "/user/new-user";
+    }
+</script>
+</body>
+</html>

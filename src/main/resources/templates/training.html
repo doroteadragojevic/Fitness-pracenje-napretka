@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Treninzi</title>
+    <style>
+        nav {
+            background-color: #515052;
+            overflow: hidden;
+        }
+
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <a href="#treninzi" style="background-color: #6BA292; color: black;">Treninzi</a>
+    <a href="#vjezbe-na-treningu" onclick="redirectToTrainingExercises()">Vjezbe na treningu</a>
+    <a href="#vjezbe"  onclick="redirectToExercises()">Vjezbe</a>
+    <a href="#korisnik" onclick="redirectToUsers()">Korisnik</a>
+</nav>
+
+<h1>Treninzi</h1>
+<br>
+<button type="button" onclick="izradiTrening()">Izradi novi trening</button>
+
+<script>
+
+    function redirectToTrainingExercises() {
+        var currentHost = window.location.host;
+        window.location.href = "http://" + currentHost + "/trainingExercise/";
+    }
+
+    function redirectToUsers() {
+        var currentHost = window.location.host;
+        window.location.href = "http://" + currentHost + "/user/";
+    }
+
+    function redirectToExercises() {
+        var currentHost = window.location.host;
+        window.location.href = "http://" + currentHost + "/exercise/";
+    }
+
+    function izradiTrening() {
+        var currentHost = window.location.host;
+        window.location.href = "http://" + currentHost + "/training/new-training";
+    }
+
+</script>
+</body>
+</html>

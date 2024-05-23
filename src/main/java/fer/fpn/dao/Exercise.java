@@ -20,12 +20,11 @@ public class Exercise {
     private String description;
 
     @ManyToOne
-    @NotNull
-    private User user;
+    private UserFPN user;
 
-    private Exercise(){}
+    public Exercise(){}
 
-    public Exercise(String description, String title, User user) {
+    public Exercise(String description, String title, UserFPN user) {
         this.description = description;
         this.title = title;
         this.user = user;
@@ -55,11 +54,11 @@ public class Exercise {
         this.description = description;
     }
 
-    public User getUser() {
+    public UserFPN getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserFPN user) {
         this.user = user;
     }
 }

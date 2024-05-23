@@ -7,7 +7,7 @@ import jakarta.persistence.ManyToOne;
 import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
-public class User {
+public class UserFPN {
 
     @Id
     @GeneratedValue
@@ -31,11 +31,22 @@ public class User {
 
     //ovo je id trenera ovog korisnika
     @ManyToOne
-    private User trainer;
+    private UserFPN trainer;
 
-    public User(){}
+    public UserFPN(){}
 
-    public User(String role, String name, String surname, String email, String password, Float dailyCalGoal, User trainer) {
+    public UserFPN(String role, String name, String surname, String email, String password, Float dailyCalGoal, UserFPN trainer) {
+        this.role = role;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.dailyCalGoal = dailyCalGoal;
+        this.trainer = trainer;
+    }
+
+    public UserFPN(Long userId, String role, String name, String surname, String email, String password, Float dailyCalGoal, UserFPN trainer) {
+        this.userId = userId;
         this.role = role;
         this.name = name;
         this.surname = surname;
@@ -101,11 +112,11 @@ public class User {
         this.dailyCalGoal = dailyCalGoal;
     }
 
-    public User getTrainer() {
+    public UserFPN getTrainer() {
         return trainer;
     }
 
-    public void setTrainer(User trainer) {
+    public void setTrainer(UserFPN trainer) {
         this.trainer = trainer;
     }
 }

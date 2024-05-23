@@ -1,9 +1,10 @@
 package fer.fpn.DTO;
 
-import fer.fpn.dao.User;
-import org.antlr.v4.runtime.misc.NotNull;
+import fer.fpn.dao.UserFPN;
 
 public class UserDTO {
+
+    private Long userId;
 
     private String role;
 
@@ -84,7 +85,15 @@ public class UserDTO {
     private Long idTrainer;
     private String trainerName;
 
-    public UserDTO(String role, String name, String surname, String email, String password, Float dailyCalGoal, String trainerName, Long idTrainer) {
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public UserDTO(Long userId, String role, String name, String surname, String email, String password, Float dailyCalGoal, String trainerName, Long idTrainer) {
         this.role = role;
         this.name = name;
         this.surname = surname;
@@ -93,9 +102,22 @@ public class UserDTO {
         this.dailyCalGoal = dailyCalGoal;
         this.trainerName = trainerName;
         this.idTrainer = idTrainer;
+        this.userId = userId;
     }
 
-    public static UserDTO toDto(User user){
-        return new UserDTO(user.getRole(), user.getName(), user.getSurname(), user.getEmail(), user.getPassword(), user.getDailyCalGoal(), user.getTrainer().getName(), user.getTrainer().getUserId());
+    public UserDTO(){}
+
+    public static UserDTO toDto(UserFPN user){
+        return new UserDTO(
+                user.getUserId(),
+                user.getRole(),
+                user.getName(),
+                user.getSurname(),
+                user.getEmail(),
+                user.getPassword(),
+                user.getDailyCalGoal(),
+                user.getTrainer()==null ? null : user.getTrainer().getName(),
+                user.getTrainer()==null ? null : user.getTrainer().getUserId()
+        );
     }
 }

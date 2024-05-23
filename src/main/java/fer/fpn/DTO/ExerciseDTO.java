@@ -1,9 +1,6 @@
 package fer.fpn.DTO;
 
 import fer.fpn.dao.Exercise;
-import fer.fpn.dao.User;
-import jakarta.persistence.ManyToOne;
-import org.antlr.v4.runtime.misc.NotNull;
 
 public class ExerciseDTO {
 
@@ -14,6 +11,10 @@ public class ExerciseDTO {
     private String description;
 
     private Long idUser;
+
+    public ExerciseDTO() {
+
+    }
 
     public Long getIdExercise() {
         return idExercise;
@@ -55,6 +56,10 @@ public class ExerciseDTO {
     }
 
     public static ExerciseDTO toDto(Exercise exercise){
-        return new ExerciseDTO(exercise.getIdExercise(), exercise.getTitle(), exercise.getDescription(), exercise.getUser().getUserId());
+        return new ExerciseDTO(
+                exercise.getIdExercise(),
+                exercise.getTitle(),
+                exercise.getDescription(),
+                exercise.getUser() == null ? null : exercise.getUser().getUserId());
     }
 }

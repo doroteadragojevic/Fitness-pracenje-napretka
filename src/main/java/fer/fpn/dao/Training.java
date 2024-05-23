@@ -21,11 +21,11 @@ public class Training {
 
     @NotNull
     @ManyToOne
-    private User user;
+    private UserFPN user;
 
     public Training(){}
 
-    public Training(String title, String description, User user) {
+    public Training(String title, String description, UserFPN user) {
         this.title = title;
         this.description = description;
         this.user = user;
@@ -55,11 +55,11 @@ public class Training {
         this.description = description;
     }
 
-    public User getUser() {
+    public UserFPN getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserFPN user) {
         this.user = user;
     }
 }
