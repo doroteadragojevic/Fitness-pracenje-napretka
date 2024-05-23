@@ -9,5 +9,5 @@ import fer.fpn.dao.Training;
 import fer.fpn.dao.User;
 
 public interface TrainingRepository extends JpaRepository<Training, Long>{
-	List<User> findByCoachId(Long coachId);
+
 }
