@@ -20,10 +20,9 @@ public class Exercise {
     private String description;
 
     @ManyToOne
-    @NotNull
     private UserFPN user;
 
-    private Exercise(){}
+    public Exercise(){}
 
     public Exercise(String description, String title, UserFPN user) {
         this.description = description;

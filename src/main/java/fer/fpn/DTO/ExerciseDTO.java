@@ -12,6 +12,10 @@ public class ExerciseDTO {
 
     private Long idUser;
 
+    public ExerciseDTO() {
+
+    }
+
     public Long getIdExercise() {
         return idExercise;
     }
@@ -52,6 +56,10 @@ public class ExerciseDTO {
     }
 
     public static ExerciseDTO toDto(Exercise exercise){
-        return new ExerciseDTO(exercise.getIdExercise(), exercise.getTitle(), exercise.getDescription(), exercise.getUser().getUserId());
+        return new ExerciseDTO(
+                exercise.getIdExercise(),
+                exercise.getTitle(),
+                exercise.getDescription(),
+                exercise.getUser() == null ? null : exercise.getUser().getUserId());
     }
 }
