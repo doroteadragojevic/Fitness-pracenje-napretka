@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import fer.fpn.service.UserService;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -14,7 +16,8 @@ public class UserController {
 	private UserService userService;
 
 	@GetMapping("/")
-	public String users() {
+	public String users(Model model) {
+		model.addAttribute("users", userService.getAllUsers());
 		return "users";
 	}
 
@@ -28,5 +31,11 @@ public class UserController {
 	public String newUser(@ModelAttribute("user") UserDTO user){
 		userService.newUser(user);
 		return "redirect:/user/";
+	}
+
+	@GetMapping("/{userId}")
+	public String getUser(@PathVariable Long userId, Model model){
+		model.addAttribute("user", userService.getUserById(userId));
+		return "user";
 	}
 }
