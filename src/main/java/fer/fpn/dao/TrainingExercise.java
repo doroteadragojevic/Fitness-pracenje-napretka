@@ -1,6 +1,7 @@
 package fer.fpn.dao;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 
@@ -8,10 +9,13 @@ import jakarta.persistence.OneToOne;
 public class TrainingExercise {
 
     @Id
+    @GeneratedValue
+    private Long id;
+
     @OneToOne
     private Training training;
 
-    @Id
+
     @OneToOne
     private Exercise exercise;
 
@@ -57,6 +61,14 @@ public class TrainingExercise {
 
     public Integer getSets() {
         return sets;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setSets(Integer sets) {
