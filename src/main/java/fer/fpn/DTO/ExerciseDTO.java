@@ -1,9 +1,6 @@
 package fer.fpn.DTO;
 
 import fer.fpn.dao.Exercise;
-import fer.fpn.dao.User;
-import jakarta.persistence.ManyToOne;
-import org.antlr.v4.runtime.misc.NotNull;
 
 public class ExerciseDTO {
 

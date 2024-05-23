@@ -1,12 +1,9 @@
 package fer.fpn.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import fer.fpn.dao.Exercise;
-import fer.fpn.dao.User;
+import fer.fpn.dao.UserFPN;
 
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface UserRepository extends JpaRepository<UserFPN, Long>{
 
 }

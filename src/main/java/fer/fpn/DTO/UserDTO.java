@@ -1,7 +1,6 @@
 package fer.fpn.DTO;
 
-import fer.fpn.dao.User;
-import org.antlr.v4.runtime.misc.NotNull;
+import fer.fpn.dao.UserFPN;
 
 public class UserDTO {
 
@@ -95,7 +94,9 @@ public class UserDTO {
         this.idTrainer = idTrainer;
     }
 
-    public static UserDTO toDto(User user){
+    public UserDTO(){}
+
+    public static UserDTO toDto(UserFPN user){
         return new UserDTO(user.getRole(), user.getName(), user.getSurname(), user.getEmail(), user.getPassword(), user.getDailyCalGoal(), user.getTrainer().getName(), user.getTrainer().getUserId());
     }
 }
