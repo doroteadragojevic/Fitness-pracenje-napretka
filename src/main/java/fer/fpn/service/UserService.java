@@ -27,4 +27,18 @@ public class UserService {
     public UserDTO getUserById(Long userId) {
         return UserDTO.toDto(userRepository.getReferenceById(userId));
     }
+
+    public UserDTO updateUser(UserDTO user) {
+        UserFPN u = userRepository.getReferenceById(user.getUserId());
+        u.setRole(user.getRole());
+        u.setName(user.getName());
+        u.setSurname(user.getSurname());
+        u.setEmail(user.getEmail());
+        u.setPassword(user.getPassword());
+        return UserDTO.toDto(userRepository.save(u));
+    }
+
+    public void deleteUser(Long userId) {
+        userRepository.deleteById(userId);
+    }
 }

@@ -38,4 +38,22 @@ public class UserController {
 		model.addAttribute("user", userService.getUserById(userId));
 		return "user";
 	}
+
+	@GetMapping("/update/{userId}")
+	public String updateUser(@PathVariable Long userId, Model model){
+		model.addAttribute("user", userService.getUserById(userId));
+		return "userUpdate";
+	}
+
+	@PostMapping("/update")
+	public String updateUser(@ModelAttribute("user") UserDTO user){
+		UserDTO u = userService.updateUser(user);
+		return "redirect:/user/" + u.getUserId();
+	}
+
+	@GetMapping("/delete/{userId}")
+	public String deleteUser(@PathVariable Long userId){
+		userService.deleteUser(userId);
+		return "redirect:/user/";
+	}
 }

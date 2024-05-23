@@ -133,7 +133,7 @@
             <td class="action-buttons">
                 <button type="button" th:onclick="'redirectToPregled(' + ${user.userId} + ')'">Pregled</button>
                 <button type="button" th:onclick="'redirectToUpdate(' + ${user.userId} + ')'">Uredi</button>
-                <button type="button" th:onclick="delete()">Izbriši</button>
+                <button type="button" th:onclick="'redirectToDelete(' + ${user.userId} + ')'">Izbriši</button>
             </td>
         </tr>
         </tbody>
@@ -145,6 +145,16 @@
     function redirectToPregled(userId) {
         var currentHost = window.location.host;
         window.location.href = "http://" + currentHost + "/user/" + userId;
+    }
+
+    function redirectToUpdate(userId) {
+        var currentHost = window.location.host;
+        window.location.href = "http://" + currentHost + "/user/update/" + userId;
+    }
+
+    function redirectToDelete(userId) {
+        var currentHost = window.location.host;
+        window.location.href = "http://" + currentHost + "/user/delete/" + userId;
     }
 
     function redirectToTrainings() {

@@ -45,6 +45,17 @@ public class UserFPN {
         this.trainer = trainer;
     }
 
+    public UserFPN(Long userId, String role, String name, String surname, String email, String password, Float dailyCalGoal, UserFPN trainer) {
+        this.userId = userId;
+        this.role = role;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.dailyCalGoal = dailyCalGoal;
+        this.trainer = trainer;
+    }
+
     public Long getUserId() {
         return userId;
     }

@@ -114,22 +114,21 @@
         </div>
     </div>
     <div class="button-container">
-        <button type="button" onclick="editUser(/* userId */)">Uredi</button>
-        <button type="button" class="delete" onclick="deleteUser(/* userId */)">Izbriši</button>
+        <button type="button" th:onclick="'redirectToUpdate(' + ${user.userId} + ')'">Uredi</button>
+        <button type="button" class="delete" th:onclick="'redirectToDelete(' + ${user.userId} + ')'">Izbriši</button>
     </div>
 </div>
 
 <script>
-    function editUser(userId) {
+
+    function redirectToUpdate(userId) {
         var currentHost = window.location.host;
-        window.location.href = "http://" + currentHost + "/user/edit/" + userId;
+        window.location.href = "http://" + currentHost + "/user/update/" + userId;
     }
 
-    function deleteUser(userId) {
-        if (confirm("Jeste li sigurni da želite izbrisati ovog korisnika?")) {
-            var currentHost = window.location.host;
-            window.location.href = "http://" + currentHost + "/user/delete/" + userId;
-        }
+    function redirectToDelete(userId) {
+        var currentHost = window.location.host;
+        window.location.href = "http://" + currentHost + "/user/delete/" + userId;
     }
 </script>
 </body>
