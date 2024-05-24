@@ -1,9 +1,6 @@
 package fer.fpn.dao;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class TrainingExercise {
@@ -16,7 +13,7 @@ public class TrainingExercise {
     private Training training;
 
 
-    @OneToOne
+    @ManyToOne
     private Exercise exercise;
 
     private Integer reps;
