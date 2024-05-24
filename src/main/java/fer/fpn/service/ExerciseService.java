@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ExerciseService {
@@ -23,7 +24,16 @@ public class ExerciseService {
     }
 
     public ExerciseDTO getExerciseById(Long exerciseId) {
-        return ExerciseDTO.toDto(exerciseRepository.getReferenceById(exerciseId));
+    	Optional<Exercise> exerciseOptional = exerciseRepository.findById(exerciseId);
+        return exerciseOptional.map(ExerciseDTO::toDto).orElse(null);
+    }
+    public ExerciseDTO findPreviousExercise(Long exerciseId) {
+        Optional<Exercise> exerciseOptional = exerciseRepository.findFirstByIdExerciseLessThanOrderByIdExerciseDesc(exerciseId);
+        return exerciseOptional.map(ExerciseDTO::toDto).orElse(null);
+    }
+    public ExerciseDTO findNextExercise(Long exerciseId) {
+        Optional<Exercise> exerciseOptional = exerciseRepository.findFirstByIdExerciseGreaterThanOrderByIdExerciseAsc(exerciseId);
+        return exerciseOptional.map(ExerciseDTO::toDto).orElse(null);
     }
 
     public ExerciseDTO updateExercise(ExerciseDTO exercise) {
