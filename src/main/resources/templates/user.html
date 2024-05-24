@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <title th:text="${user.name}">Korisnik</title>
     <style>
+      .button-container.top-left {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 10px;
+    }
+    
         body {
             font-family: sans-serif;
             font-size: 16px;
@@ -88,7 +95,10 @@
     </style>
 </head>
 <body>
-
+<div class="button-container top-left">
+    <button type="button" th:if="${prevUserId != null}" th:onclick="'redirectToUser(' + ${prevUserId} + ')'">Previous</button>
+    <button type="button" th:if="${nextUserId != null}" th:onclick="'redirectToUser(' + ${nextUserId} + ')'">Next</button>
+</div>
 <div class="user-info-container">
     <h2 th:text="'Informacije o korisniku: ' + ${user.name} + ' ' + ${user.surname}">Informacije o korisniku: Ivan Ivić</h2>
     <div class="user-info">
@@ -120,6 +130,11 @@
 </div>
 
 <script>
+
+ function redirectToUser(userId) {
+        var currentHost = window.location.host;
+        window.location.href = "http://" + currentHost + "/user/" + userId;
+    }
 
     function redirectToUpdate(userId) {
         var currentHost = window.location.host;
