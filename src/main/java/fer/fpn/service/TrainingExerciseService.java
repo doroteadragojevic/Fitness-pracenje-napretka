@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import fer.fpn.repository.TrainingExerciseRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TrainingExerciseService {
@@ -30,7 +31,17 @@ public class TrainingExerciseService {
     }
 
     public TrainingExerciseDTO getTrainingExerciseById(Long trainingExerciseId) {
-        return TrainingExerciseDTO.toDto(trainingExerciseRepository.getReferenceById(trainingExerciseId));
+    	Optional<TrainingExercise> trainingExerciseOptional = trainingExerciseRepository.findById(trainingExerciseId);
+        return trainingExerciseOptional.map(TrainingExerciseDTO::toDto).orElse(null);
+    }
+    public TrainingExerciseDTO findPreviousTrainingExercise(Long trainingExerciseId) {
+        Optional<TrainingExercise> trainingExerciseOptional = trainingExerciseRepository.findFirstByIdLessThanOrderByIdDesc(trainingExerciseId);
+        return trainingExerciseOptional.map(TrainingExerciseDTO::toDto).orElse(null);
+    }
+
+    public TrainingExerciseDTO findNextTrainingExercise(Long trainingExerciseId) {
+        Optional<TrainingExercise> trainingExerciseOptional = trainingExerciseRepository.findFirstByIdGreaterThanOrderByIdAsc(trainingExerciseId);
+        return trainingExerciseOptional.map(TrainingExerciseDTO::toDto).orElse(null);
     }
 
     public TrainingExerciseDTO updateTrainingExercise(TrainingExerciseDTO exercise) {
