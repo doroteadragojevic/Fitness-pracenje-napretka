@@ -46,4 +46,8 @@ public class TrainingExerciseService {
     public void deleteTrainingExercise(Long trainingExerciseId) {
         trainingExerciseRepository.deleteById(trainingExerciseId);
     }
+
+    public List<TrainingExerciseDTO> getTrainingExercisesFromListId(List<Long> ids) {
+        return trainingExerciseRepository.findAll().stream().filter(t -> ids.contains(t.getId())).map(TrainingExerciseDTO::toDto).toList();
+    }
 }
