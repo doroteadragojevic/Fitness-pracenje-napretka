@@ -2,7 +2,7 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Nova vježba za trening</title>
+    <title>Novi trening</title>
     <style>
         h1 {
             text-align: center;
@@ -83,37 +83,32 @@
 </head>
 <body>
 
-<h1>Nova vježba za trening</h1>
+<h1>Novi trening</h1>
 <br>
 <div class="form-container">
-    <form th:action="@{/trainingExercise/new-training-exercise}" th:object="${trainingExercise}" method="post">
-        <input type="hidden" th:field="*{idTraining}" />
+    <form th:action="@{/training/new-training}" th:object="${training}" method="post">
+
         <div class="form-group">
-            <label for="idExercise">Vježba:</label>
-            <select id="idExercise" th:field="*{idExercise}" required>
-                <option value="" disabled selected>Odaberite vježbu</option>
-                <option th:each="exercise : ${exercises}" th:value="${exercise.idExercise}" th:text="${exercise.title}"></option>
+            <label for="userId">Trening za korisnika:</label>
+            <select id="userId" th:field="*{userId}" required>
+                <option value="" disabled selected>Dorotea Dragojević</option>
+                <option th:each="user : ${users}" th:value="${user.userId}" th:text="${user.name} + ' ' + ${user.surname}"></option>
             </select>
         </div>
 
-
         <div class="form-group">
-            <label for="reps">Broj ponavljanja:</label>
-            <input type="number" id="reps" th:field="*{reps}" required>
+            <label for="title">Naziv:</label>
+            <input type="text" id="title" th:field="*{title}" required>
         </div>
 
         <div class="form-group">
-            <label for="sets">Broj serija:</label>
-            <input type="number" id="sets" th:field="*{sets}" required>
+            <label for="description">Opis:</label>
+            <textarea id="description" th:field="*{description}"></textarea>
         </div>
 
-        <div class="form-group">
-            <label for="weight">Kilaža:</label>
-            <input type="number" step="0.01" id="weight" th:field="*{weight}">
-        </div>
 
         <div class="form-group">
-            <button type="submit">Dodaj novu vježbu za trening</button>
+            <button type="submit">Dodaj novi trening</button>
         </div>
     </form>
 </div>

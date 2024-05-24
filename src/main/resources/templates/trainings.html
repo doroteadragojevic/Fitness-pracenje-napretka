@@ -2,7 +2,7 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Vježbe na treningu</title>
+    <title>Treninzi</title>
     <style>
         body {
             font-family: sans-serif;
@@ -99,39 +99,36 @@
 </head>
 <body>
 <nav>
-    <a href="#treninzi"  onclick="redirectToTrainings()">Treninzi</a>
-    <a href="#vjezbe-na-treningu"  style="background-color: #6BA292; color: black;">Vjezbe na treningu</a>
-    <a href="#vjezbe" onclick="redirectToExercises()">Vjezbe</a>
+    <a href="#treninzi" style="background-color: #6BA292; color: black;">Treninzi</a>
+    <a href="#vjezbe"  onclick="redirectToExercises()">Vjezbe</a>
     <a href="#korisnik" onclick="redirectToUsers()">Korisnik</a>
 </nav>
 
-<h1>Vježbe na treningu</h1>
+<h1>Treninzi</h1>
+<br>
+<button type="button" onclick="izradiTrening()">Izradi novi trening</button>
 
 <div class="table-container">
     <table>
         <thead>
         <tr>
             <th>ID</th>
-            <th>ID vježbe</th>
-            <th>Naziv vježbe</th>
-            <th>Broj ponavljanja: </th>
-            <th>Broj serija: </th>
-            <th>Kilaža:</th>
+            <th>Naziv treninga</th>
+            <th>Opis treninga: </th>
+            <th>Korisnik: </th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="te : ${trainingExercises}">
-            <td th:text="${te.id}">1</td>
-            <td th:text="${te.idExercise}">1</td>
-            <td th:text="${te.titleOfExercise}">Deadlift</td>
-            <td th:text="${te.reps}">12</td>
-            <td th:text="${te.sets}">3</td>
-            <td th:text="${te.weight}">80</td>
+        <tr th:each="training : ${trainings}">
+            <td th:text="${training.idTraining}">1</td>
+            <td th:text="${training.title}">Trening 1</td>
+            <td th:text="${training.description}">Neki opis</td>
+            <td th:text="${training.userName} + ' ' + ${training.userSurname}">Neki opis</td>
             <td class="action-buttons">
-                <button type="button" th:onclick="'redirectToPregled(' + ${te.id} + ')'">Pregled</button>
-                <button type="button" th:onclick="'redirectToUpdate(' + ${te.id} + ')'">Uredi</button>
-                <button type="button" th:onclick="'redirectToDelete(' + ${te.id} + ')'">Izbriši</button>
+                <button type="button" th:onclick="'redirectToPregled(' + ${training.idTraining} + ')'">Pregled</button>
+                <button type="button" th:onclick="'redirectToUpdate(' + ${training.idTraining} + ')'">Uredi</button>
+                <button type="button" th:onclick="'redirectToDelete(' + ${training.idTraining} + ')'">Izbriši</button>
             </td>
         </tr>
         </tbody>
@@ -140,40 +137,35 @@
 
 <script>
 
-    function redirectToPregled(id) {
-        var currentHost = window.location.host;
-        window.location.href = "http://" + currentHost + "/trainingExercise/" + id;
-    }
-
-    function redirectToUpdate(id) {
-        var currentHost = window.location.host;
-        window.location.href = "http://" + currentHost + "/trainingExercise/update/" + id;
-    }
-
     function redirectToDelete(id) {
-        var currentHost = window.location.host;
-        window.location.href = "http://" + currentHost + "/trainingExercise/delete/" + id;
-    }
+       var currentHost = window.location.host;
+       window.location.href = "http://" + currentHost + "/training/delete/" + id;
+   }
 
-    function newTrainingExercise() {
-        var currentHost = window.location.host;
-        window.location.href = "http://" + currentHost + "/trainingExercise/new-training-exercise";
-    }
+   function redirectToUpdate(idTraining) {
+       var currentHost = window.location.host;
+       window.location.href = "http://" + currentHost + "/training/update/" + idTraining;
+   }
 
-    function redirectToTrainings() {
-        var currentHost = window.location.host;
-        window.location.href = "http://" + currentHost + "/training/";
-    }
+   function redirectToPregled(idTraining) {
+       var currentHost = window.location.host;
+       window.location.href = "http://" + currentHost + "/training/" + idTraining;
+   }
 
-    function redirectToUsers() {
-        var currentHost = window.location.host;
-        window.location.href = "http://" + currentHost + "/user/";
-    }
+   function redirectToUsers() {
+       var currentHost = window.location.host;
+       window.location.href = "http://" + currentHost + "/user/";
+   }
 
-    function redirectToExercises() {
-        var currentHost = window.location.host;
-        window.location.href = "http://" + currentHost + "/exercise/";
-    }
+   function redirectToExercises() {
+       var currentHost = window.location.host;
+       window.location.href = "http://" + currentHost + "/exercise/";
+   }
+
+   function izradiTrening() {
+       var currentHost = window.location.host;
+       window.location.href = "http://" + currentHost + "/training/new-training";
+   }
 
 </script>
 </body>

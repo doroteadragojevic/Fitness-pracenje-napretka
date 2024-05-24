@@ -88,7 +88,7 @@
 <div class="form-container">
     <form th:action="@{/trainingExercise/update}" th:object="${trainingExercise}" method="post">
         <input type="hidden" th:field="*{id}" />
-
+        <input type="hidden" th:field="*{idTraining}" />
         <div class="form-group">
             <label for="idExercise">Vježba:</label>
             <select id="idExercise" th:field="*{idExercise}" required>

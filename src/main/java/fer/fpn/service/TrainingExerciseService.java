@@ -2,8 +2,10 @@ package fer.fpn.service;
 
 import fer.fpn.DTO.TrainingExerciseDTO;
 import fer.fpn.dao.Exercise;
+import fer.fpn.dao.Training;
 import fer.fpn.dao.TrainingExercise;
 import fer.fpn.repository.ExerciseRepository;
+import fer.fpn.repository.TrainingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,13 +22,13 @@ public class TrainingExerciseService {
     @Autowired
     ExerciseRepository exerciseRepository;
 
-    public List<TrainingExerciseDTO> getAllTrainingExercises() {
-        return trainingExerciseRepository.findAll().stream().map(TrainingExerciseDTO::toDto).toList();
-    }
+    @Autowired
+    TrainingRepository trainingRepository;
 
     public void newTrainingExercise(TrainingExerciseDTO exercise) {
         Exercise exercise1 = exerciseRepository.getReferenceById(exercise.getIdExercise());
-        trainingExerciseRepository.save(new TrainingExercise(exercise1, exercise.getReps(), exercise.getSets(), exercise.getWeight(), null));
+        Training training = trainingRepository.getReferenceById(exercise.getIdTraining());
+        trainingExerciseRepository.save(new TrainingExercise(exercise1, exercise.getReps(), exercise.getSets(), exercise.getWeight(), training));
     }
 
     public TrainingExerciseDTO getTrainingExerciseById(Long trainingExerciseId) {
@@ -34,16 +36,20 @@ public class TrainingExerciseService {
     }
 
     public TrainingExerciseDTO updateTrainingExercise(TrainingExerciseDTO exercise) {
-        Exercise exercise1 = exerciseRepository.getReferenceById(exercise.getIdExercise());
         TrainingExercise te = trainingExerciseRepository.getReferenceById(exercise.getId());
-        te.setExercise(exercise1);
-        te.setReps(exercise.getReps());
+        Exercise exercise1 = exerciseRepository.getReferenceById(exercise.getIdExercise());
         te.setSets(exercise.getSets());
+        te.setReps(exercise.getReps());
         te.setWeight(exercise.getWeight());
+        te.setExercise(exercise1);
         return TrainingExerciseDTO.toDto(trainingExerciseRepository.save(te));
     }
 
     public void deleteTrainingExercise(Long trainingExerciseId) {
         trainingExerciseRepository.deleteById(trainingExerciseId);
+    }
+
+    public List<TrainingExerciseDTO> getExerciseTrainingsForTraining(Long idTraining) {
+        return trainingExerciseRepository.findAll().stream().filter(te -> te.getTraining().getIdTraining()==idTraining).sorted((te1, te2) -> te1.getId().compareTo(te2.getId())).map(TrainingExerciseDTO::toDto).toList();
     }
 }

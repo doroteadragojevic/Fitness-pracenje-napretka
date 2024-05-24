@@ -15,15 +15,14 @@ public class Training {
 
     @NotNull
     private String title;
-
     @NotNull
     private String description;
-
     @NotNull
     @ManyToOne
     private UserFPN user;
 
-    public Training(){}
+    public Training() {
+    }
 
     public Training(String title, String description, UserFPN user) {
         this.title = title;

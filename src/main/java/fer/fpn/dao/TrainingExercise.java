@@ -1,28 +1,25 @@
 package fer.fpn.dao;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class TrainingExercise {
-
     @Id
     @GeneratedValue
     private Long id;
-
-    @OneToOne
+    @ManyToOne
     private Training training;
-
-
     @ManyToOne
     private Exercise exercise;
-
     private Integer reps;
-
     private Integer sets;
-
     private Float weight;
 
-    public TrainingExercise(){}
+    public TrainingExercise() {
+    }
 
     public TrainingExercise(Exercise exercise, Integer reps, Integer sets, Float weight, Training training) {
         this.exercise = exercise;
@@ -30,6 +27,14 @@ public class TrainingExercise {
         this.sets = sets;
         this.weight = weight;
         this.training = training;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Training getTraining() {
@@ -60,13 +65,6 @@ public class TrainingExercise {
         return sets;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public void setSets(Integer sets) {
         this.sets = sets;
