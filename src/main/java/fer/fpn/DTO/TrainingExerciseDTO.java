@@ -43,7 +43,14 @@ public class TrainingExerciseDTO {
     }
 
     public static TrainingExerciseDTO toDto(TrainingExercise te){
-        return new TrainingExerciseDTO(te.getId(), te.getExercise().getIdExercise(), te.getExercise().getTitle(), te.getReps(), te.getSets(), te.getWeight(), te.getTraining().getIdTraining());
+        return new TrainingExerciseDTO(
+                te.getId(),
+                te.getExercise().getIdExercise(),
+                te.getExercise().getTitle(),
+                te.getReps(),
+                te.getSets(),
+                te.getWeight(),
+                te.getTraining() == null ? null : te.getTraining().getIdTraining());
     }
 
     public Long getIdExercise() {
