@@ -1,6 +1,8 @@
 package fer.fpn.controller;
 
 import fer.fpn.DTO.UserDTO;
+import fer.fpn.dao.UserFPN;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,9 +35,23 @@ public class UserController {
 		return "redirect:/user/";
 	}
 
+//	@GetMapping("/{userId}")
+//	public String getUser(@PathVariable Long userId, Model model){
+//		model.addAttribute("user", userService.getUserById(userId));
+//		model.addAttribute("prevUserId", userService.findPreviousUser(userId) != null ? userService.getUserById(userId-1) : null);
+//        model.addAttribute("nextUserId", userService.findNextUser(userId) != null? userService.getUserById(userId+1) : null);
+//		return "user";
+//	}
+	
 	@GetMapping("/{userId}")
 	public String getUser(@PathVariable Long userId, Model model){
+		UserDTO currentUser = userService.getUserById(userId);
+        UserDTO prevUser = userService.findPreviousUser(userId);
+        UserDTO nextUser = userService.findNextUser(userId);
 		model.addAttribute("user", userService.getUserById(userId));
+		model.addAttribute("prevUserId", prevUser != null ? prevUser.getUserId() : null);
+        model.addAttribute("nextUserId", nextUser != null ? nextUser.getUserId() : null);
+
 		return "user";
 	}
 

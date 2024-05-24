@@ -3,6 +3,7 @@ package fer.fpn.service;
 import fer.fpn.DTO.UserDTO;
 import fer.fpn.dao.UserFPN;
 import fer.fpn.repository.UserRepository;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,17 @@ public class UserService {
     }
 
     public UserDTO getUserById(Long userId) {
-        return UserDTO.toDto(userRepository.getReferenceById(userId));
+    	Optional<UserFPN> user = userRepository.findById(userId);
+        return user.map(UserDTO::toDto).orElse(null);
+    }
+    public UserDTO findPreviousUser(Long userId) {
+    	 Optional<UserFPN> user = userRepository.findFirstByUserIdLessThanOrderByUserIdDesc(userId);
+         return user.map(UserDTO::toDto).orElse(null);
+    }
+
+    public UserDTO findNextUser(Long userId) {
+    	Optional<UserFPN> user = userRepository.findFirstByUserIdGreaterThanOrderByUserIdAsc(userId);
+        return user.map(UserDTO::toDto).orElse(null);
     }
 
     public UserDTO updateUser(UserDTO user) {

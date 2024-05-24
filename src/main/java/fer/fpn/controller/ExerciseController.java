@@ -35,9 +35,16 @@ public class ExerciseController {
 
 	@GetMapping("/{exerciseId}")
 	public String getExercise(@PathVariable Long exerciseId, Model model){
-		model.addAttribute("exercise", exerciseService.getExerciseById(exerciseId));
-		return "exercise";
-	}
+		    ExerciseDTO currentExercise = exerciseService.getExerciseById(exerciseId);
+		    ExerciseDTO prevExercise = exerciseService.findPreviousExercise(exerciseId);
+		    ExerciseDTO nextExercise = exerciseService.findNextExercise(exerciseId);
+
+		    model.addAttribute("exercise", currentExercise);
+		    model.addAttribute("prevExerciseId", prevExercise != null ? prevExercise.getIdExercise() : null);
+		    model.addAttribute("nextExerciseId", nextExercise != null ? nextExercise.getIdExercise() : null);
+
+		    return "exercise";
+		    }
 
 	@GetMapping("/update/{exerciseId}")
 	public String updateExercise(@PathVariable Long exerciseId, Model model){
