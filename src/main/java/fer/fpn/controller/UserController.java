@@ -45,7 +45,6 @@ public class UserController {
 	
 	@GetMapping("/{userId}")
 	public String getUser(@PathVariable Long userId, Model model){
-		UserDTO currentUser = userService.getUserById(userId);
         UserDTO prevUser = userService.findPreviousUser(userId);
         UserDTO nextUser = userService.findNextUser(userId);
 		model.addAttribute("user", userService.getUserById(userId));
