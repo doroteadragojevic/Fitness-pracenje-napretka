@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TrainingService {
@@ -31,9 +32,18 @@ public class TrainingService {
     }
 
     public TrainingDTO getTrainingById(Long idTraining) {
-        return TrainingDTO.toDto(trainingRepository.getReferenceById(idTraining));
+        Optional<Training> trainingOptional = trainingRepository.findById(idTraining);
+        return trainingOptional.map(TrainingDTO::toDto).orElse(null);
+    }
+    public TrainingDTO findPreviousTraining(Long idTraining) {
+        Optional<Training> previousTrainingOptional = trainingRepository.findFirstByIdTrainingLessThanOrderByIdTrainingDesc(idTraining);
+        return previousTrainingOptional.map(TrainingDTO::toDto).orElse(null);
     }
 
+    public TrainingDTO findNextTraining(Long idTraining) {
+        Optional<Training> nextTrainingOptional = trainingRepository.findFirstByIdTrainingGreaterThanOrderByIdTrainingAsc(idTraining);
+        return nextTrainingOptional.map(TrainingDTO::toDto).orElse(null);
+    }
     public TrainingDTO updateTraining(TrainingDTO training) {
         Training t = trainingRepository.getReferenceById(training.getIdTraining());
         t.setDescription(training.getDescription());

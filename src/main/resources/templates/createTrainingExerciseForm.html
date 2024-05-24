@@ -100,16 +100,19 @@
         <div class="form-group">
             <label for="reps">Broj ponavljanja:</label>
             <input type="number" id="reps" th:field="*{reps}" required>
+            <div th:if="${#fields.hasErrors('reps')}" th:errors="*{reps}"></div>
         </div>
 
         <div class="form-group">
             <label for="sets">Broj serija:</label>
             <input type="number" id="sets" th:field="*{sets}" required>
+             <div th:if="${#fields.hasErrors('sets')}" th:errors="*{sets}"></div>
         </div>
 
         <div class="form-group">
             <label for="weight">Kilaža:</label>
-            <input type="number" step="0.01" id="weight" th:field="*{weight}">
+            <input type="number" step="0.01" id="weight" th:field="*{weight}" required>
+             <div th:if="${#fields.hasErrors('weight')}" th:errors="*{weight}"></div>
         </div>
 
         <div class="form-group">

@@ -43,9 +43,13 @@ public class TrainingController {
 
 	@GetMapping("/{idTraining}")
 	public String getTraining(@PathVariable Long idTraining, Model model){
+		TrainingDTO previousTraining = trainingService.findPreviousTraining(idTraining);
+	    TrainingDTO nextTraining = trainingService.findNextTraining(idTraining);
 		TrainingDTO training = trainingService.getTrainingById(idTraining);
 		model.addAttribute("training", training);
 		model.addAttribute("tes", trainingExerciseService.getExerciseTrainingsForTraining(idTraining));
+		model.addAttribute("prevTrainingId", previousTraining != null ? previousTraining.getIdTraining() : null);
+	    model.addAttribute("nextTrainingId", nextTraining != null ? nextTraining.getIdTraining() : null);
 		return "training";
 	}
 
