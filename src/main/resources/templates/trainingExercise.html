@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <title th:text="${trainingExercise.titleOfExercise}">Vježba za trening</title>
     <style>
+     .button-container.top-left {
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin: 10px;
+    }
         body {
             font-family: sans-serif;
             font-size: 16px;
@@ -90,6 +96,10 @@
 <body>
 
 <div class="user-info-container">
+<div class="button-container top-left">
+    <button type="button" th:if="${prevTrainingExerciseId != null}" th:onclick="'redirectToTrainingExercise(' + ${prevTrainingExerciseId} + ')'">Previous</button>
+    <button type="button" th:if="${nextTrainingExerciseId != null}" th:onclick="'redirectToTrainingExercise(' + ${nextTrainingExerciseId} + ')'">Next</button>
+</div>
     <h2 th:text="'Informacije o vježbi za trening: ' + ${trainingExercise.titleOfExercise}">Informacije o vježbi za trening</h2>
     <div class="user-info">
         <div>
@@ -129,6 +139,10 @@
     function redirectToDelete(id) {
         var currentHost = window.location.host;
         window.location.href = "http://" + currentHost + "/trainingExercise/delete/" + id;
+    }
+    function redirectToTrainingExercise(id) {
+        var currentHost = window.location.host;
+        window.location.href = "http://" + currentHost + "/trainingExercise/" + id;
     }
 </script>
 </body>
