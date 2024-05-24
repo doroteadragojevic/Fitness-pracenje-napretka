@@ -123,6 +123,10 @@
             <span class="label">Opis treninga:</span>
             <span class="value" th:text="${training.description}">Opis</span>
         </div>
+        <div>
+            <span class="label">Korisnik:</span>
+            <span class="value" th:text="${training.userName} + ' ' + ${training.userSurname}">Dorotea Dragojević</span>
+        </div>
     </div>
     <div class="button-container">
         <button type="button" th:onclick="'redirectToUpdateT(' + ${training.idTraining} + ')'">Uredi</button>
