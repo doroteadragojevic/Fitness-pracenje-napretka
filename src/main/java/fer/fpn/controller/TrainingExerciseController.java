@@ -1,6 +1,5 @@
 package fer.fpn.controller;
 
-import fer.fpn.DTO.ExerciseDTO;
 import fer.fpn.DTO.TrainingExerciseDTO;
 import fer.fpn.service.ExerciseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +18,10 @@ public class TrainingExerciseController {
 	@Autowired
 	private ExerciseService exerciseService;
 
-	@GetMapping("/")
-	public String trainings(Model model) {
-		model.addAttribute("trainingExercises", trainingExerciseService.getAllTrainingExercises());
-		return "trainingexercises";
-	}
 
-	@GetMapping("/new-training-exercise")
-	public String newExercise(Model model){
-		model.addAttribute("trainingExercise", new TrainingExerciseDTO());
+	@GetMapping("/new-training-exercise/{idTraining}")
+	public String newExercise(@PathVariable Long idTraining, Model model){
+		model.addAttribute("trainingExercise", new TrainingExerciseDTO(idTraining));
 		model.addAttribute("exercises", exerciseService.getAllExercises());
 		return "createTrainingExerciseForm";
 	}
@@ -36,7 +30,7 @@ public class TrainingExerciseController {
 	public String newExercise(@ModelAttribute("trainingExercise") TrainingExerciseDTO exercise){
 
 		trainingExerciseService.newTrainingExercise(exercise);
-		return "redirect:/trainingExercise/";
+		return "redirect:/training/" + exercise.getIdTraining();
 	}
 
 	@GetMapping("/{trainingExerciseId}")
@@ -54,8 +48,8 @@ public class TrainingExerciseController {
 
 	@PostMapping("/update")
 	public String updateExercise(@ModelAttribute("trainingExercise") TrainingExerciseDTO exercise){
-		TrainingExerciseDTO u = trainingExerciseService.updateTrainingExercise(exercise);
-		return "redirect:/trainingExercise/" + u.getId();
+		trainingExerciseService.updateTrainingExercise(exercise);
+		return "redirect:/training/" + exercise.getIdTraining();
 	}
 
 	@GetMapping("/delete/{trainingExerciseId}")

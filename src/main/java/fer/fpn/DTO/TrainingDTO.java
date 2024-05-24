@@ -1,11 +1,19 @@
 package fer.fpn.DTO;
 
 import fer.fpn.dao.Training;
-import org.antlr.v4.runtime.misc.NotNull;
-
-import java.util.List;
 
 public class TrainingDTO {
+
+
+    private Long idTraining;
+
+    private String title;
+
+    private String description;
+    private Long userId;
+    private String userName;
+    private String userSurname;
+
     public TrainingDTO() {
 
     }
@@ -17,16 +25,6 @@ public class TrainingDTO {
     public void setUserId(Long userId) {
         this.userId = userId;
     }
-
-    private Long idTraining;
-
-    private String title;
-
-    private String description;
-    private Long userId;
-    private List<Long> ids;
-    private String userName;
-    private String userSurname;
 
     public String getUserName() {
         return userName;
@@ -44,26 +42,18 @@ public class TrainingDTO {
         this.userSurname = userSurname;
     }
 
-    public TrainingDTO(Long idTraining, String title, String description, Long userId, List<Long> ids, String username, String usersurname) {
+    public TrainingDTO(Long idTraining, String title, String description, Long userId, String username, String usersurname) {
         this.idTraining = idTraining;
         this.title = title;
         this.description = description;
         this.userId = userId;
-        this.ids = ids;
         this.userName = username;
         this.userSurname = usersurname;
     }
 
-    public List<Long> getIds() {
-        return ids;
-    }
-
-    public void setIds(List<Long> ids) {
-        this.ids = ids;
-    }
 
     public static TrainingDTO toDto(Training training) {
-        return new TrainingDTO(training.getIdTraining(), training.getTitle(), training.getDescription(), training.getUser().getUserId(), training.getTrainingExercisesIds(), training.getUser().getName(), training.getUser().getSurname());
+        return new TrainingDTO(training.getIdTraining(), training.getTitle(), training.getDescription(), training.getUser().getUserId(), training.getUser().getName(), training.getUser().getSurname());
     }
 
     public Long getIdTraining() {

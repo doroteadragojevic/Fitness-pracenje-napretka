@@ -100,7 +100,6 @@
 <body>
 <nav>
     <a href="#treninzi" onclick="redirectToTrainings()">Treninzi</a>
-    <a href="#vjezbe-na-treningu" onclick="redirectToTrainingExercises()">Vjezbe na treningu</a>
     <a href="#vjezbe" onclick="redirectToExercises()">Vjezbe</a>
     <a href="#korisnik" style="background-color: #6BA292; color: black;">Korisnik</a>
 </nav>
@@ -160,11 +159,6 @@
     function redirectToTrainings() {
         var currentHost = window.location.host;
         window.location.href = "http://" + currentHost + "/training/";
-    }
-
-    function redirectToTrainingExercises() {
-        var currentHost = window.location.host;
-        window.location.href = "http://" + currentHost + "/trainingExercise/";
     }
 
     function redirectToExercises() {

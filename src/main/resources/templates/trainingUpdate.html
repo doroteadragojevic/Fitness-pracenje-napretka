@@ -2,7 +2,7 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Nova vježba za trening</title>
+    <title>Ažuriraj trening</title>
     <style>
         h1 {
             text-align: center;
@@ -83,37 +83,35 @@
 </head>
 <body>
 
-<h1>Nova vježba za trening</h1>
+<h1>Ažuriraj trening</h1>
 <br>
 <div class="form-container">
-    <form th:action="@{/trainingExercise/new-training-exercise}" th:object="${trainingExercise}" method="post">
-        <input type="hidden" th:field="*{idTraining}" />
+    <form th:action="@{/training/update}" th:object="${training}" method="post">
+        <input type="hidden" th:field="*{idTraining}"/>
         <div class="form-group">
-            <label for="idExercise">Vježba:</label>
-            <select id="idExercise" th:field="*{idExercise}" required>
-                <option value="" disabled selected>Odaberite vježbu</option>
-                <option th:each="exercise : ${exercises}" th:value="${exercise.idExercise}" th:text="${exercise.title}"></option>
-            </select>
-        </div>
 
+            <div class="form-group">
+                <label for="title">Naziv:</label>
+                <input type="text" id="title" th:field="*{title}" required>
+            </div>
 
-        <div class="form-group">
-            <label for="reps">Broj ponavljanja:</label>
-            <input type="number" id="reps" th:field="*{reps}" required>
-        </div>
+            <div class="form-group">
+                <label for="description">Opis:</label>
+                <input type="text" id="description" th:field="*{description}">
+            </div>
 
-        <div class="form-group">
-            <label for="sets">Broj serija:</label>
-            <input type="number" id="sets" th:field="*{sets}" required>
-        </div>
+            <div class="form-group">
+                <label for="userId">Korisnik:</label>
+                <select id="userId" th:field="*{userId}" required>
+                    <option value="" disabled>Odaberite korisnika</option>
+                    <option th:each="user : ${users}" th:value="${user.userId}"
+                            th:text="${user.name} + ' ' + ${user.surname}"></option>
+                </select>
+            </div>
 
-        <div class="form-group">
-            <label for="weight">Kilaža:</label>
-            <input type="number" step="0.01" id="weight" th:field="*{weight}">
-        </div>
-
-        <div class="form-group">
-            <button type="submit">Dodaj novu vježbu za trening</button>
+            <div class="form-group">
+                <button type="submit">Ažuriraj trening</button>
+            </div>
         </div>
     </form>
 </div>

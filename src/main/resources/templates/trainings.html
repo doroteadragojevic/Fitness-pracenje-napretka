@@ -100,7 +100,6 @@
 <body>
 <nav>
     <a href="#treninzi" style="background-color: #6BA292; color: black;">Treninzi</a>
-    <a href="#vjezbe-na-treningu" onclick="redirectToTrainingExercises()">Vjezbe na treningu</a>
     <a href="#vjezbe"  onclick="redirectToExercises()">Vjezbe</a>
     <a href="#korisnik" onclick="redirectToUsers()">Korisnik</a>
 </nav>
@@ -138,30 +137,35 @@
 
 <script>
 
-    function redirectToPregled(idTraining) {
-        var currentHost = window.location.host;
-        window.location.href = "http://" + currentHost + "/training/" + idTraining;
-    }
+    function redirectToDelete(id) {
+       var currentHost = window.location.host;
+       window.location.href = "http://" + currentHost + "/training/delete/" + id;
+   }
 
-    function redirectToTrainingExercises() {
-        var currentHost = window.location.host;
-        window.location.href = "http://" + currentHost + "/trainingExercise/";
-    }
+   function redirectToUpdate(idTraining) {
+       var currentHost = window.location.host;
+       window.location.href = "http://" + currentHost + "/training/update/" + idTraining;
+   }
 
-    function redirectToUsers() {
-        var currentHost = window.location.host;
-        window.location.href = "http://" + currentHost + "/user/";
-    }
+   function redirectToPregled(idTraining) {
+       var currentHost = window.location.host;
+       window.location.href = "http://" + currentHost + "/training/" + idTraining;
+   }
 
-    function redirectToExercises() {
-        var currentHost = window.location.host;
-        window.location.href = "http://" + currentHost + "/exercise/";
-    }
+   function redirectToUsers() {
+       var currentHost = window.location.host;
+       window.location.href = "http://" + currentHost + "/user/";
+   }
 
-    function izradiTrening() {
-        var currentHost = window.location.host;
-        window.location.href = "http://" + currentHost + "/training/new-training";
-    }
+   function redirectToExercises() {
+       var currentHost = window.location.host;
+       window.location.href = "http://" + currentHost + "/exercise/";
+   }
+
+   function izradiTrening() {
+       var currentHost = window.location.host;
+       window.location.href = "http://" + currentHost + "/training/new-training";
+   }
 
 </script>
 </body>

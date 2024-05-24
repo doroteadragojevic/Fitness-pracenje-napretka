@@ -27,7 +27,7 @@ public class TrainingService {
 
     public void newTraining(TrainingDTO training) {
         UserFPN user = userRepository.getReferenceById(training.getUserId());
-        trainingRepository.save(new Training(training.getTitle(), training.getDescription(), user, training.getIds()));
+        trainingRepository.save(new Training(training.getTitle(), training.getDescription(), user));
     }
 
     public TrainingDTO getTrainingById(Long idTraining) {
@@ -35,11 +35,17 @@ public class TrainingService {
     }
 
     public TrainingDTO updateTraining(TrainingDTO training) {
-        return null;
+        Training t = trainingRepository.getReferenceById(training.getIdTraining());
+        t.setDescription(training.getDescription());
+        t.setTitle(training.getTitle());
+        UserFPN user = userRepository.getReferenceById(training.getUserId());
+        t.setUser(user);
+        return TrainingDTO.toDto(trainingRepository.save(t));
     }
 
     public void deleteTraining(Long idTraining) {
-
+        trainingExerciseRepository.deleteAllById(trainingExerciseRepository.findAll().stream().filter(te -> te.getTraining().getIdTraining() == idTraining).map(TrainingExercise::getId).toList());
+        trainingRepository.deleteById(idTraining);
     }
 
     public List<TrainingDTO> getAllTrainings() {

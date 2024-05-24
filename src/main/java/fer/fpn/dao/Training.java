@@ -1,10 +1,10 @@
 package fer.fpn.dao;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import org.antlr.v4.runtime.misc.NotNull;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Training {
@@ -15,31 +15,19 @@ public class Training {
 
     @NotNull
     private String title;
-
     @NotNull
     private String description;
-
     @NotNull
     @ManyToOne
     private UserFPN user;
 
-    public List<Long> getTrainingExercisesIds() {
-        return trainingExercisesIds;
+    public Training() {
     }
 
-    public void setTrainingExercisesIds(List<Long> trainingExercisesIds) {
-        this.trainingExercisesIds = trainingExercisesIds;
-    }
-
-    List<Long> trainingExercisesIds = new ArrayList<>();
-
-    public Training(){}
-
-    public Training(String title, String description, UserFPN user, List<Long> ids) {
+    public Training(String title, String description, UserFPN user) {
         this.title = title;
         this.description = description;
         this.user = user;
-        this.trainingExercisesIds = ids;
     }
 
     public Long getIdTraining() {

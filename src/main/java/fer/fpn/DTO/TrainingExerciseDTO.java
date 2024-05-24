@@ -24,6 +24,11 @@ public class TrainingExerciseDTO {
         this.id = id;
     }
 
+    public TrainingExerciseDTO(Long idTraining) {
+        this.idTraining = idTraining;
+    }
+
+
     public Long getIdTraining() {
         return idTraining;
     }
@@ -32,8 +37,8 @@ public class TrainingExerciseDTO {
         this.idTraining = idTraining;
     }
 
-    public TrainingExerciseDTO(Long id,Long idExercise, String titleOfExercise, Integer reps, Integer sets, Float weight, Long idTraining) {
-        this.id  = id;
+    public TrainingExerciseDTO(Long id, Long idExercise, String titleOfExercise, Integer reps, Integer sets, Float weight, Long idTraining) {
+        this.id = id;
         this.idExercise = idExercise;
         this.titleOfExercise = titleOfExercise;
         this.reps = reps;
