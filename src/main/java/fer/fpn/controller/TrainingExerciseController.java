@@ -52,9 +52,9 @@ public class TrainingExerciseController {
 		return "redirect:/training/" + exercise.getIdTraining();
 	}
 
-	@GetMapping("/delete/{trainingExerciseId}")
-	public String deleteExercise(@PathVariable Long trainingExerciseId){
+	@GetMapping("/delete/{trainingExerciseId}/{idTraining}")
+	public String deleteExercise(@PathVariable Long trainingExerciseId, @PathVariable Long idTraining){
 		trainingExerciseService.deleteTrainingExercise(trainingExerciseId);
-		return "redirect:/trainingExercise/";
+		return "redirect:/training/" + idTraining;
 	}
 }

@@ -164,7 +164,7 @@
                 <td class="action-buttons">
                     <button type="button" th:onclick="'redirectToPregled(' + ${te.id} + ')'">Pregled</button>
                     <button type="button" th:onclick="'redirectToUpdate(' + ${te.id} + ')'">Uredi</button>
-                    <button type="button" th:onclick="'redirectToDelete(' + ${te.id} + ')'">Izbriši</button>
+                    <button type="button" th:onclick="'redirectToDelete(' + ${te.id} + ', ' + ${training.idTraining} + ')'">Izbriši</button>
                 </td>
             </tr>
             </tbody>
@@ -201,9 +201,9 @@
            window.location.href = "http://" + currentHost + "/trainingExercise/update/" + id;
        }
 
-       function redirectToDelete(id) {
+       function redirectToDelete(id, idTraining) {
            var currentHost = window.location.host;
-           window.location.href = "http://" + currentHost + "/trainingExercise/delete/" + id;
+           window.location.href = "http://" + currentHost + "/trainingExercise/delete/" + id + "/" + idTraining;
        }
 </script>
 </body>
