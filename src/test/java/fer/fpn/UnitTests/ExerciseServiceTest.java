@@ -1,4 +1,4 @@
-package fer.fpn;
+package fer.fpn.UnitTests;
 import fer.fpn.DTO.ExerciseDTO;
 import fer.fpn.dao.Exercise;
 import fer.fpn.repository.ExerciseRepository;
@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class ExerciseServiceTests {
+public class ExerciseServiceTest {
 	@Mock
     private ExerciseRepository exerciseRepository;
 

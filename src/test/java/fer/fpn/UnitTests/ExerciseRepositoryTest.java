@@ -1,4 +1,4 @@
-package fer.fpn;
+package fer.fpn.UnitTests;
 import fer.fpn.dao.Exercise;
 import fer.fpn.repository.ExerciseRepository;
 import fer.fpn.service.ExerciseService;
@@ -13,14 +13,14 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
-public class ExerciseRepositoryTests {
+public class ExerciseRepositoryTest {
 	 @Mock
 	    private ExerciseRepository exerciseRepository;
 
 	    @InjectMocks
 	    private ExerciseService exerciseService;
 
-	    public ExerciseRepositoryTests() {
+	    public ExerciseRepositoryTest() {
 	        MockitoAnnotations.openMocks(this);
 	    }
 

@@ -1,4 +1,4 @@
-package fer.fpn;
+package fer.fpn.IntegrationTests;
 
 import fer.fpn.DTO.TrainingDTO;
 import fer.fpn.controller.TrainingController;
@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @TestMethodOrder(OrderAnnotation.class)
 @Transactional
 @Rollback
-public class TrainingIntegrationTests {
+public class TrainingIntegrationTest {
 	 @Autowired
 	    private MockMvc mockMvc;
 	 

@@ -1,4 +1,4 @@
-package fer.fpn;
+package fer.fpn.UnitTests;
 import fer.fpn.dao.TrainingExercise;
 import fer.fpn.repository.TrainingExerciseRepository;
 import fer.fpn.service.TrainingExerciseService;
@@ -14,7 +14,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
-public class TrainingExerciseRepositoryTests {
+public class TrainingExerciseRepositoryTest {
 	@Mock
     private TrainingExerciseRepository trainingExerciseRepository;
 

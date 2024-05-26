@@ -1,4 +1,4 @@
-package fer.fpn;
+package fer.fpn.UnitTests;
 import fer.fpn.DTO.UserDTO;
 import fer.fpn.controller.UserController;
 import fer.fpn.service.UserService;
@@ -13,7 +13,7 @@ import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-public class UserControllerTests {
+public class UserControllerTest {
 	  @InjectMocks
 	    private UserController userController;
 

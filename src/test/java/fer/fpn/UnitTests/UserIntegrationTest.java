@@ -1,4 +1,4 @@
-package fer.fpn;
+package fer.fpn.UnitTests;
 import fer.fpn.DTO.UserDTO;
 import fer.fpn.dao.UserFPN;
 import fer.fpn.repository.UserRepository;
@@ -22,7 +22,7 @@ import static org.hamcrest.Matchers.hasProperty;
 @Transactional
 @Rollback
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class UserIntegrationTests {
+public class UserIntegrationTest {
 	
 	 @Autowired
 	    private MockMvc mockMvc;

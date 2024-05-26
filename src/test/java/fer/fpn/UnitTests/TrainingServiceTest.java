@@ -1,4 +1,4 @@
-package fer.fpn;
+package fer.fpn.UnitTests;
 import fer.fpn.DTO.TrainingDTO;
 import fer.fpn.dao.Training;
 import fer.fpn.dao.TrainingExercise;
@@ -26,7 +26,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class TrainingServiceTests {
+public class TrainingServiceTest {
 
     @Mock
     private TrainingRepository trainingRepository;

@@ -1,4 +1,4 @@
-package fer.fpn;
+package fer.fpn.UnitTests;
 import fer.fpn.dao.UserFPN;
 import fer.fpn.repository.UserRepository;
 import fer.fpn.service.UserService;
@@ -10,14 +10,14 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
-public class UserRepositoryTests {
+public class UserRepositoryTest {
 	 @Mock
 	    private UserRepository userRepository;
 
 	    @InjectMocks
 	    private UserService userService;
 
-	    public UserRepositoryTests() {
+	    public UserRepositoryTest() {
 	        MockitoAnnotations.openMocks(this);
 	    }
 

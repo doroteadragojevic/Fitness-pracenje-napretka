@@ -1,4 +1,4 @@
-package fer.fpn;
+package fer.fpn.UnitTests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
@@ -15,7 +15,7 @@ import fer.fpn.DTO.TrainingExerciseDTO;
 import fer.fpn.service.ExerciseService;
 import fer.fpn.service.TrainingExerciseService;
 import fer.fpn.controller.TrainingExerciseController;
-public class TrainingExerciseControllerTests {
+public class TrainingExerciseControllerTest {
 	 @InjectMocks
 	    private TrainingExerciseController trainingExerciseController;
 

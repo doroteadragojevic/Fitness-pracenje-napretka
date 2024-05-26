@@ -1,4 +1,4 @@
-package fer.fpn;
+package fer.fpn.UnitTests;
 import fer.fpn.dao.Training;
 import fer.fpn.repository.TrainingRepository;
 import fer.fpn.service.TrainingService;
@@ -19,14 +19,14 @@ import static org.mockito.Mockito.when;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(false)
-public class TrainingRepositoryTests {
+public class TrainingRepositoryTest {
 	@Mock
     private TrainingRepository trainingRepository;
 
     @InjectMocks
     private TrainingService trainingService;
 
-    public TrainingRepositoryTests() {
+    public TrainingRepositoryTest() {
         MockitoAnnotations.openMocks(this);
     }
 

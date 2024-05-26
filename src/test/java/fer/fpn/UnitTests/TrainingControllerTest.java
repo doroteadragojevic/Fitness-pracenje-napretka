@@ -1,4 +1,4 @@
-package fer.fpn;
+package fer.fpn.UnitTests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ import fer.fpn.service.TrainingExerciseService;
 import fer.fpn.service.TrainingService;
 import fer.fpn.service.UserService;
 
-public class TrainingControllerTests {
+public class TrainingControllerTest {
 	@Mock
     private TrainingService trainingService;
     

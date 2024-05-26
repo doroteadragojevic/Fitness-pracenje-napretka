@@ -1,4 +1,4 @@
-package fer.fpn;
+package fer.fpn.UnitTests;
 
 import fer.fpn.repository.UserRepository;
 import fer.fpn.service.UserService;
@@ -15,7 +15,7 @@ import org.mockito.MockitoAnnotations;
 import fer.fpn.DTO.UserDTO;
 import fer.fpn.dao.UserFPN;
 
-public class UserServiceTests {
+public class UserServiceTest {
 	@Mock
     private UserRepository userRepository;
 

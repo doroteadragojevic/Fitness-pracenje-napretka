@@ -1,4 +1,4 @@
-package fer.fpn;
+package fer.fpn.UnitTests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -12,7 +12,7 @@ import fer.fpn.DTO.ExerciseDTO;
 import fer.fpn.controller.ExerciseController;
 import fer.fpn.service.ExerciseService;
 
-public class ExerciseControllerTests {
+public class ExerciseControllerTest {
 	  private ExerciseService exerciseService;
 	    private ExerciseController exerciseController;
 	    private Model model;
