@@ -42,6 +42,8 @@ public class ExerciseService {
         e.setDescription(exercise.getDescription());
         return ExerciseDTO.toDto(exerciseRepository.save(e));
     }
+    
+  
 
     public void deleteExercise(Long exerciseId) {
         exerciseRepository.deleteById(exerciseId);

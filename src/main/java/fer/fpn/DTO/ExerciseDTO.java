@@ -1,5 +1,7 @@
 package fer.fpn.DTO;
 
+import java.util.Objects;
+
 import fer.fpn.dao.Exercise;
 
 public class ExerciseDTO {
@@ -61,5 +63,32 @@ public class ExerciseDTO {
                 exercise.getTitle(),
                 exercise.getDescription(),
                 exercise.getUser() == null ? null : exercise.getUser().getUserId());
+    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        ExerciseDTO that = (ExerciseDTO) o;
+//        return Objects.equals(idExercise, that.idExercise) &&
+//                Objects.equals(title, that.title) &&
+//                Objects.equals(description, that.description) &&
+//                Objects.equals(idUser, that.idUser);
+//    }
+    
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ExerciseDTO that = (ExerciseDTO) o;
+        return Objects.equals(idExercise, that.idExercise) &&
+                Objects.equals(title, that.title) &&
+                Objects.equals(description, that.description) &&
+                Objects.equals(idUser, that.idUser); 
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(idExercise, title, description, idUser);
     }
 }

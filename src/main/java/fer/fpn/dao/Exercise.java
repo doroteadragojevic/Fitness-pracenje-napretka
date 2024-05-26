@@ -4,6 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+
+import java.util.Objects;
+
 import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
@@ -60,5 +63,15 @@ public class Exercise {
 
     public void setUser(UserFPN user) {
         this.user = user;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Exercise exercise = (Exercise) o;
+        return Objects.equals(idExercise, exercise.idExercise) &&
+                Objects.equals(title, exercise.title) &&
+                Objects.equals(description, exercise.description) &&
+                Objects.equals(user, exercise.user);
     }
 }

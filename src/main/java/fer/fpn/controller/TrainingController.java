@@ -13,13 +13,13 @@ import fer.fpn.service.TrainingService;
 @RequestMapping("/training")
 public class TrainingController {
 	@Autowired
-	private TrainingService trainingService;
+	public TrainingService trainingService;
 
 	@Autowired
-	private UserService userService;
+	public UserService userService;
 
 	@Autowired
-	private TrainingExerciseService trainingExerciseService;
+	public TrainingExerciseService trainingExerciseService;
 
 	@GetMapping("/")
 	public String trainings(Model model) {
@@ -43,9 +43,13 @@ public class TrainingController {
 
 	@GetMapping("/{idTraining}")
 	public String getTraining(@PathVariable Long idTraining, Model model){
+		TrainingDTO previousTraining = trainingService.findPreviousTraining(idTraining);
+	    TrainingDTO nextTraining = trainingService.findNextTraining(idTraining);
 		TrainingDTO training = trainingService.getTrainingById(idTraining);
 		model.addAttribute("training", training);
 		model.addAttribute("tes", trainingExerciseService.getExerciseTrainingsForTraining(idTraining));
+		model.addAttribute("prevTrainingId", previousTraining != null ? previousTraining.getIdTraining() : null);
+	    model.addAttribute("nextTrainingId", nextTraining != null ? nextTraining.getIdTraining() : null);
 		return "training";
 	}
 

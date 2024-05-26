@@ -12,7 +12,7 @@ import fer.fpn.service.ExerciseService;
 @RequestMapping("/exercise")
 public class ExerciseController {
 		@Autowired
-		private ExerciseService exerciseService;
+		public ExerciseService exerciseService;
 
 
 	@GetMapping("/")
