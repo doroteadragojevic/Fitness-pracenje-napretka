@@ -1,18 +1,16 @@
 package fer.fpn;
 import fer.fpn.DTO.UserDTO;
 import fer.fpn.dao.UserFPN;
-import fer.fpn.repository.TrainingExerciseRepository;
-import fer.fpn.repository.TrainingRepository;
 import fer.fpn.repository.UserRepository;
-import org.junit.jupiter.api.BeforeAll;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.web.servlet.MockMvc;
-import java.util.Arrays;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -21,6 +19,8 @@ import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.hasProperty;
 @SpringBootTest
 @AutoConfigureMockMvc
+@Transactional
+@Rollback
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class UserIntegrationTests {
 	
@@ -29,24 +29,7 @@ public class UserIntegrationTests {
 
 	    @Autowired
 	    private UserRepository userRepository;
-	    
-	    @Autowired
-	    private TrainingRepository trainingRepository;
-	    
-	    @Autowired
-	    private TrainingExerciseRepository trainingExerciseRepository;
 
-
-	    @BeforeAll
-	    void setUp() {
-	    	trainingExerciseRepository.deleteAll();
-	    	trainingRepository.deleteAll();
-	        userRepository.deleteAll();
-	        UserFPN user1 = new UserFPN("Sportas", "Valentina", "Valic", "valentina.valic13@gmail.com", "lozinka123", 2000f, null);
-	        UserFPN user2 = new UserFPN("Trener", "Dorotea", "Dragojevic", "d.d@gmail.com", "loz345", 1800f, null);
-	        userRepository.saveAll(Arrays.asList(user1, user2));
-	    }
-	    
 	    @Test
 	    public void testCreateNewUser() throws Exception {
 	        UserDTO newUser = new UserDTO(null, null, "Ana", "Cepic", "a.c@gmail.com", null, 1500f, null, null);
@@ -64,7 +47,9 @@ public class UserIntegrationTests {
 
 	    @Test
 	    public void testUpdateUser() throws Exception {
-	    	Optional<UserFPN> optionalUser = userRepository.findByEmail("valentina.valic13@gmail.com");
+	    	UserFPN user1 = new UserFPN("Sportas", "Valentina", "Valic", "valentina.valic14@gmail.com", "lozinka123", 2000f, null);
+	    	userRepository.save(user1);
+	    	Optional<UserFPN> optionalUser = userRepository.findByEmail("valentina.valic14@gmail.com");
 	        assertTrue(optionalUser.isPresent(), "User not found");
 
 	        UserFPN user = optionalUser.get();
@@ -80,13 +65,15 @@ public class UserIntegrationTests {
 	                .andExpect(status().is3xxRedirection())
 	                .andExpect(redirectedUrl("/user/" + user.getUserId()));
 
-	        UserFPN updatedUser = userRepository.findByEmail("valentina.valic13@gmail.com").get();
+	        UserFPN updatedUser = userRepository.findByEmail("valentina.valic14@gmail.com").get();
 	        assert(updatedUser.getName().equals("Vale"));
 	        assert(updatedUser.getSurname().equals("Vaaalic"));
 	    }
 
 	    @Test
 	    public void testDeleteUser() throws Exception {
+	    	UserFPN user1 = new UserFPN("Sportas", "Valentina", "Valic", "valentina.valic14@gmail.com", "lozinka123", 2000f, null);
+	    	userRepository.save(user1);
 	        UserFPN user = userRepository.findByEmail("valentina.valic13@gmail.com").get();
 
 	        mockMvc.perform(get("/user/delete/" + user.getUserId()))
