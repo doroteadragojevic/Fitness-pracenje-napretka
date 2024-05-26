@@ -1,6 +1,8 @@
 package fer.fpn.DTO;
 
 
+import java.util.Objects;
+
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -112,5 +114,18 @@ public class TrainingExerciseDTO {
 
     public void setWeight(Float weight) {
         this.weight = weight;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TrainingExerciseDTO that = (TrainingExerciseDTO) o;
+        return Objects.equals(id, that.id) &&
+               Objects.equals(idExercise, that.idExercise) &&
+               Objects.equals(idTraining, that.idTraining) &&
+               Objects.equals(titleOfExercise, that.titleOfExercise) &&
+               Objects.equals(reps, that.reps) &&
+               Objects.equals(sets, that.sets) &&
+               Objects.equals(weight, that.weight);
     }
 }

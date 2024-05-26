@@ -17,10 +17,10 @@ import fer.fpn.service.TrainingExerciseService;
 @RequestMapping("/trainingExercise")
 public class TrainingExerciseController {
 	@Autowired
-	private TrainingExerciseService trainingExerciseService;
+	public TrainingExerciseService trainingExerciseService;
 
 	@Autowired
-	private ExerciseService exerciseService;
+	public ExerciseService exerciseService;
 
 
 	@GetMapping("/new-training-exercise/{idTraining}")

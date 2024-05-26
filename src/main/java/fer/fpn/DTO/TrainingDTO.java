@@ -1,5 +1,7 @@
 package fer.fpn.DTO;
 
+import java.util.Objects;
+
 import fer.fpn.dao.Training;
 
 public class TrainingDTO {
@@ -53,8 +55,16 @@ public class TrainingDTO {
 
 
     public static TrainingDTO toDto(Training training) {
+    	if (training == null) {
+            return null;
+        }
+        Long userId = null;
+        if (training.getUser() != null) {
+           userId = training.getUser().getUserId();
+       }
         return new TrainingDTO(training.getIdTraining(), training.getTitle(), training.getDescription(), training.getUser().getUserId(), training.getUser().getName(), training.getUser().getSurname());
     }
+    
 
     public Long getIdTraining() {
         return idTraining;
@@ -78,5 +88,15 @@ public class TrainingDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TrainingDTO that = (TrainingDTO) o;
+        return Objects.equals(idTraining, that.idTraining) &&
+               Objects.equals(title, that.title) &&
+               Objects.equals(description, that.description) &&
+               Objects.equals(userId, that.userId);
     }
 }

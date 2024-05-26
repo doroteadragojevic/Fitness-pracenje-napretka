@@ -13,13 +13,13 @@ import fer.fpn.service.TrainingService;
 @RequestMapping("/training")
 public class TrainingController {
 	@Autowired
-	private TrainingService trainingService;
+	public TrainingService trainingService;
 
 	@Autowired
-	private UserService userService;
+	public UserService userService;
 
 	@Autowired
-	private TrainingExerciseService trainingExerciseService;
+	public TrainingExerciseService trainingExerciseService;
 
 	@GetMapping("/")
 	public String trainings(Model model) {

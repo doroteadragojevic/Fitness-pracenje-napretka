@@ -1,5 +1,7 @@
 package fer.fpn.DTO;
 
+import java.util.Objects;
+
 import fer.fpn.dao.UserFPN;
 
 public class UserDTO {
@@ -93,6 +95,22 @@ public class UserDTO {
         this.userId = userId;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserDTO userDTO = (UserDTO) o;
+        return Objects.equals(userId, userDTO.userId) &&
+                Objects.equals(role, userDTO.role) &&
+                Objects.equals(name, userDTO.name) &&
+                Objects.equals(surname, userDTO.surname) &&
+                Objects.equals(email, userDTO.email) &&
+                Objects.equals(password, userDTO.password) &&
+                Objects.equals(dailyCalGoal, userDTO.dailyCalGoal) &&
+                Objects.equals(idTrainer, userDTO.idTrainer) &&
+                Objects.equals(trainerName, userDTO.trainerName);
+    }
     public UserDTO(Long userId, String role, String name, String surname, String email, String password, Float dailyCalGoal, String trainerName, Long idTrainer) {
         this.role = role;
         this.name = name;

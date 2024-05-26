@@ -17,6 +17,7 @@ import java.util.Optional;
 public class TrainingService {
 
     @Autowired
+	public
     TrainingRepository trainingRepository;
 
     @Autowired

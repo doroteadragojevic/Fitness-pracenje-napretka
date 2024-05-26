@@ -1,5 +1,7 @@
 package fer.fpn.dao;
 
+import java.util.Objects;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -76,5 +78,17 @@ public class TrainingExercise {
 
     public void setWeight(Float weight) {
         this.weight = weight;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TrainingExercise that = (TrainingExercise) o;
+        return Objects.equals(id, that.id) &&
+               Objects.equals(training, that.training) &&
+               Objects.equals(exercise, that.exercise) &&
+               Objects.equals(reps, that.reps) &&
+               Objects.equals(sets, that.sets) &&
+               Objects.equals(weight, that.weight);
     }
 }
